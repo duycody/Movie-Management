@@ -1,3 +1,4 @@
+import { Category } from './../../model/category.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -5,14 +6,16 @@ import { Movie } from 'src/app/model/movie.model';
 import { MovieService } from 'src/app/model/movie.service';
 import { Nation } from 'src/app/model/nation.model';
 import { NationService } from 'src/app/model/nation.service';
+import { CategoryService } from 'src/app/model/category.service';
 
 @Component({
   selector: 'app-manage-create',
   templateUrl: './manage-create.component.html',
-  styleUrls: ['./manage-create.component.css']
+  styleUrls: ['./manage-create.component.css'],
 })
 export class ManageCreateComponent implements OnInit {
-
+  nations: Nation[] = [];
+  categories: Category[] = [];
   isFetching = true;
   id!: number;
   editMode = false;
@@ -20,14 +23,17 @@ export class ManageCreateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private nationService: NationService,
+    private categoryService: CategoryService
+  ) {}
   ngOnInit(): void {
-
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editMode = params['id'] != null;
     });
+    this.onFetchNations();
+    this.onFetchCategories();
     this.onGetMovie(this.id);
   }
   private initForm(b: Movie) {
@@ -35,9 +41,9 @@ export class ManageCreateComponent implements OnInit {
     let movieImagePath = '';
     let movieDescription = '';
     let movieYear = '';
-    let movieNation = '';
+    let movieNation = 'Chọn quốc gia';
     let movieDuration = '';
-    let movieCategory = '';
+    let movieCategory = 'Chọn thể loại';
 
     if (this.editMode) {
       const movie = b;
@@ -53,7 +59,7 @@ export class ManageCreateComponent implements OnInit {
     this.movieForm = new FormGroup({
       name: new FormControl(movieName, Validators.required),
       nation: new FormControl(movieNation, Validators.required),
-      category:new FormControl(movieCategory,Validators.required),
+      category: new FormControl(movieCategory, Validators.required),
       duration: new FormControl(movieDuration, Validators.required),
       year: new FormControl(movieYear, Validators.required),
       imagePath: new FormControl(movieImagePath, Validators.required),
@@ -71,6 +77,7 @@ export class ManageCreateComponent implements OnInit {
       }
     );
   }
+
   onSubmit() {
     if (this.editMode) {
       this.onUpdateMovie(this.id, this.movieForm.value);
@@ -101,5 +108,15 @@ export class ManageCreateComponent implements OnInit {
   }
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
+  }
+  onFetchNations() {
+    this.nationService.fetchNations().subscribe((nations) => {
+      this.nations = nations;
+    });
+  }
+  onFetchCategories() {
+    this.categoryService.fetchCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 }

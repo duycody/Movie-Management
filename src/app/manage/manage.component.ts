@@ -11,7 +11,7 @@ import { MovieService } from '../model/movie.service';
 export class ManageComponent implements OnInit {
   loadedPosts = [];
   constructor(private http: HttpClient) { }
-  ngOnInit() { this.fetchPosts(); }
+  ngOnInit() { }
   onCreatePost(postData: { title: string; content: string }) {
     this.http.post("https://movie-management-e5833-default-rtdb.firebaseio.com/posts.json", postData).subscribe((responseData) => {
       console.log(responseData);

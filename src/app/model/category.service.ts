@@ -49,7 +49,7 @@ export class CategoryService {
       [key: string]: Category;
     }>( 'https://movie-management-e5833-default-rtdb.firebaseio.com/categorys/' + this.key[index] + '.json' );
   }
-  fetchCategorys() {
+  fetchCategories() {
     return this.http
       .get<{ [key: string]: Category }>( 'https://movie-management-e5833-default-rtdb.firebaseio.com/categorys.json' )
       .pipe(

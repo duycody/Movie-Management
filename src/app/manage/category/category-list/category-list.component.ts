@@ -10,17 +10,17 @@ import { CategoryService } from 'src/app/model/category.service';
 })
 export class CategoryListComponent implements OnInit {
 
-  categorys: Category[] = [];
+  categories: Category[] = [];
   isFetching = true;
   constructor( private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.onFetchCategorys();
+    this.onFetchCategories();
   }
-  onFetchCategorys() {
-    this.categoryService.fetchCategorys().subscribe((categorys) => {
+  onFetchCategories() {
+    this.categoryService.fetchCategories().subscribe((categories) => {
       this.isFetching = false;
-      this.categorys = categorys;
+      this.categories = categories;
     });
   }
   onNewCategory() {
