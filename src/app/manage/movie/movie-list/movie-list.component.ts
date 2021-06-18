@@ -1,7 +1,7 @@
-import { MovieService } from './../../model/movie.service';
-import { Movie } from './../../model/movie.model';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieService } from 'src/app/model/movie.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,19 +10,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MovieListComponent implements OnInit {
 
-  totalLength: any;
+ totalLength: any;
   page:number = 1;
 
   movies: Movie[] = [];
   isFetching = true;
-  constructor(
-    private movieService: MovieService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor( private movieService: MovieService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.onFetchMovies();
+    this.route.params.subscribe((params: Params) => {
+       this.onFetchMovies();
+    });
   }
   onFetchMovies() {
     this.movieService.fetchMovies().subscribe((movies) => {
@@ -31,4 +29,8 @@ export class MovieListComponent implements OnInit {
       this.movies = movies;
     });
   }
+  onNewMovie() {
+    this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
 }

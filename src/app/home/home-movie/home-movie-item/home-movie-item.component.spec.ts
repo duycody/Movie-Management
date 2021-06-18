@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageDetailComponent } from './manage-detail.component';
+import { HomeMovieItemComponent } from './home-movie-item.component';
 
-describe('ManageDetailComponent', () => {
-  let component: ManageDetailComponent;
-  let fixture: ComponentFixture<ManageDetailComponent>;
+describe('HomeMovieItemComponent', () => {
+  let component: HomeMovieItemComponent;
+  let fixture: ComponentFixture<HomeMovieItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageDetailComponent ]
+      declarations: [ HomeMovieItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageDetailComponent);
+    fixture = TestBed.createComponent(HomeMovieItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,12 +1,15 @@
 .itemcategory{
     background-color: #1e2931;
-    padding: 50px;
+    padding: 40px 10px;
     border:1px solid transparent;
     padding-left: 20px;
     border-radius: 15px;
     text-align: center;
-    font-weight: bolder;
-    font-size: 30px;
-    color: white;
-
+    font-size: 28px;
+    color: #98a6b0;
+    font-family: 'Francois One', sans-serif;
+}
+.itemcategory:focus{
+    background-color: #2a4875;
+    color: #07172e;
 }

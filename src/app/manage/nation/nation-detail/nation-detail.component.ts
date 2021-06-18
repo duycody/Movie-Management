@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieService } from 'src/app/model/movie.service';
 import { Nation } from 'src/app/model/nation.model';
 import { NationService } from 'src/app/model/nation.service';
 
@@ -10,18 +12,33 @@ import { NationService } from 'src/app/model/nation.service';
 })
 export class NationDetailComponent implements OnInit {
 
+  totalLength: any;
+  page:number = 1;
+  movies: Movie[] = [];
   isFetching = true;
   nation: Nation = new Nation('');
   id!: number;
   constructor(
+    private movieService: MovieService,
     private nationService: NationService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
+  ngOnChanges(changes: SimpleChanges) {
+    this.onFetchMovies();
+  }
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.onGetNation(this.id);
+      this.onFetchMovies();
+    });
+  }
+  onFetchMovies() {
+    this.movieService.fetchMovies().subscribe((movies) => {
+      this.isFetching = false;
+      this.movies = movies.filter(item => item.nation == this.nation.name);
+      this.totalLength = this.movies.length;
     });
   }
   onGetNation(id: any): void {
@@ -52,5 +69,6 @@ export class NationDetailComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
+
 
 }

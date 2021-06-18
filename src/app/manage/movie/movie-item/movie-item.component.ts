@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieService } from './../../model/movie.service';
-import { Movie } from './../../model/movie.model';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieService } from 'src/app/model/movie.service';
 
 @Component({
   selector: 'app-movie-item',
@@ -10,7 +10,7 @@ import { Movie } from './../../model/movie.model';
 export class MovieItemComponent implements OnInit {
 
   @Input() movie!: Movie;
-  @Input() index!: any;
+  @Input() index: any;
 
   constructor(private movieService: MovieService) { }
 

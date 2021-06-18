@@ -1,16 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../../model/movie.model';
-import { MovieService } from '../../model/movie.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieService } from 'src/app/model/movie.service';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  selector: 'app-home-movie-detail',
+  templateUrl: './home-movie-detail.component.html',
+  styleUrls: ['./home-movie-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit {
+export class HomeMovieDetailComponent implements OnInit {
 
-  isFetching = true;
+ isFetching = true;
   movie: Movie = new Movie('', '', '', '', '', '', '');
   movies: Movie[] = [];
   id!: number;

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Category } from 'src/app/model/category.model';
 import { CategoryService } from 'src/app/model/category.service';
+import { Movie } from 'src/app/model/movie.model';
+import { MovieService } from 'src/app/model/movie.service';
 
 @Component({
   selector: 'app-category-detail',
@@ -10,10 +12,14 @@ import { CategoryService } from 'src/app/model/category.service';
 })
 export class CategoryDetailComponent implements OnInit {
 
+  totalLength: any;
+  page:number = 1;
+  movies: Movie[] = [];
   isFetching = true;
   category: Category = new Category('');
   id!: number;
   constructor(
+    private movieService: MovieService,
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router
@@ -22,6 +28,14 @@ export class CategoryDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.onGetCategory(this.id);
+      this.onFetchMovies();
+    });
+  }
+  onFetchMovies() {
+    this.movieService.fetchMovies().subscribe((movies) => {
+      this.isFetching = false;
+      this.movies = movies.filter(item => item.category == this.category.name);
+      this.totalLength = this.movies.length;
     });
   }
   onGetCategory(id: any): void {

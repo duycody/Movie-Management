@@ -4,14 +4,14 @@ import { Movie } from 'src/app/model/movie.model';
 import { MovieService } from 'src/app/model/movie.service';
 
 @Component({
-  selector: 'app-manage-detail',
-  templateUrl: './manage-detail.component.html',
-  styleUrls: ['./manage-detail.component.css']
+  selector: 'app-movie-detail',
+  templateUrl: './movie-detail.component.html',
+  styleUrls: ['./movie-detail.component.css']
 })
-export class ManageDetailComponent implements OnInit {
+export class MovieDetailComponent implements OnInit {
 
-  isFetching = true;
-  movie: Movie = new Movie('', '', '', '', '', '','');
+ isFetching = true;
+  movie: Movie = new Movie('', '', '', '', '', '', '');
   id!: number;
   constructor(
     private movieService: MovieService,
@@ -47,7 +47,12 @@ export class ManageDetailComponent implements OnInit {
         console.log(error);
       }
     );
-    this.router.navigate(['../'], { relativeTo: this.route });
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.ngOnInit();
+    this.router.navigate(['manage-component/movie']);
+  
+    });
   }
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });

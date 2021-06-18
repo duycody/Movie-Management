@@ -1,6 +1,4 @@
-<div style="padding: 20px;margin-top: 60px;">
-    <h1 class="danhsach" align="center">DANH SÁCH PHIM</h1>
-</div>
+<div style="padding: 20px;margin-top: 90px;margin-bottom: 10px;"><p class="danhsach" align="center">DANH SÁCH PHIM</p></div>
 
 <div align="center" style="margin-bottom: 10px;" *ngIf="!show">
     <button (click)="show = !show" style="font-size: 12px ;font-weight: 600; color:#394854; border-radius:5px; padding:5px 30px;background-color:transparent; border:2px solid #394854; margin:0 5px;">hiển thị bộ lọc</button>
@@ -24,6 +22,6 @@
     </div>
 </div>
 <div>
-    <app-movie-list></app-movie-list>
+    <app-home-movie-list></app-home-movie-list>
 </div>
 <router-outlet></router-outlet>

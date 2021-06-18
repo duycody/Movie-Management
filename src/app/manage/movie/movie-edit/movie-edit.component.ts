@@ -1,19 +1,20 @@
-import { Category } from './../../model/category.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Category } from 'src/app/model/category.model';
+import { CategoryService } from 'src/app/model/category.service';
 import { Movie } from 'src/app/model/movie.model';
 import { MovieService } from 'src/app/model/movie.service';
 import { Nation } from 'src/app/model/nation.model';
 import { NationService } from 'src/app/model/nation.service';
-import { CategoryService } from 'src/app/model/category.service';
 
 @Component({
-  selector: 'app-manage-create',
-  templateUrl: './manage-create.component.html',
-  styleUrls: ['./manage-create.component.css'],
+  selector: 'app-movie-edit',
+  templateUrl: './movie-edit.component.html',
+  styleUrls: ['./movie-edit.component.css']
 })
-export class ManageCreateComponent implements OnInit {
+export class MovieEditComponent implements OnInit {
+
   nations: Nation[] = [];
   categories: Category[] = [];
   isFetching = true;
@@ -83,6 +84,11 @@ export class ManageCreateComponent implements OnInit {
       this.onUpdateMovie(this.id, this.movieForm.value);
     } else {
       this.onAddMovie(this.movieForm.value);
+      this.ngOnInit();
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+      });
     }
   }
 
@@ -105,6 +111,7 @@ export class ManageCreateComponent implements OnInit {
         console.log(error);
       }
     );
+  
   }
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
@@ -119,4 +126,5 @@ export class ManageCreateComponent implements OnInit {
       this.categories = categories;
     });
   }
+
 }
