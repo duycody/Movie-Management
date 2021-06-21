@@ -1,0 +1,25 @@
+<div>
+    <h1 style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size: 40px;margin-top: 30px;color: white;">THỐNG KÊ</h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="item" (click)="onMovie()" style="background-image: url(assets/images/bgmovie.png)" tabindex="1">
+                <p>PHIM</p>
+                <h3>Có <b style="color:#ffcc00">{{movies.length}}</b> bộ phim</h3>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="item" (click)="onNation()" style="background-image: url(assets/images/bgnation.png)" tabindex="2">
+                <p>QUỐC GIA</p>
+                <h3>Có <b style="color:#ffcc00">{{nations.length}}</b> quốc gia</h3>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="item" (click)="onCategory()" style="background-image: url(assets/images/bgcategory.png)" tabindex="2">
+                <p>THỂ LOẠI</p>
+                <h3>Có <b style="color:#ffcc00">{{categories.length}}</b> thể loại phim</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+

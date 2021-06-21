@@ -9,17 +9,18 @@ import { MovieService } from 'src/app/model/movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-
- totalLength: any;
-  page:number = 1;
+  totalLength: any;
+  page: number = 1;
+  selected: string = "";
 
   movies: Movie[] = [];
   isFetching = true;
-  constructor( private movieService: MovieService, private router: Router, private route: ActivatedRoute) {}
+
+  constructor(private movieService: MovieService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-       this.onFetchMovies();
+      this.onFetchMovies();
     });
   }
   onFetchMovies() {
@@ -29,8 +30,19 @@ export class MovieListComponent implements OnInit {
       this.movies = movies;
     });
   }
+  selectMovieName(name: string) {
+    for(var i = 0;i<this.movies.length;i++){
+      if(this.movies[i].name == name)
+      {
+        this.router.navigate([i], { relativeTo: this.route });
+      }
+    }
+  }
   onNewMovie() {
     this.router.navigate(['new'], { relativeTo: this.route });
+  }
+  Cancel() {
+    this.router.navigate(['./'], { relativeTo: this.route });
   }
 
 }

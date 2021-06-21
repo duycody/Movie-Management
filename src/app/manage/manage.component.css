@@ -6,7 +6,7 @@
   height: 100vh;
   background: #172027;
   font-size: 0.65em;
-  top: 70px;
+  top: 40px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   z-index: 2;
@@ -24,7 +24,7 @@
 .maincontent {
   position: relative;
   float: right;
-  top: 70px;
+  top: 40px;
   width: 78%;
 }
 .maincontent .container {
@@ -45,4 +45,17 @@
   background-color: #31d39a;
   color: black;
   border:2px solid #042325;
+}
+.button{
+  background-color: #222e36;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 15px;
+  font-size: 15px;
+  color:black ;
+  border: 1px solid black;
+}
+.button:hover{
+  background-color:black ;
+  color:#232f38;
 }

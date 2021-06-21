@@ -14,10 +14,11 @@
 
 :host {
   background: #182229;
+  padding-top: 50px;
   color: #fff;
   position: fixed;
   right: auto;
-  top: 50px;
+  top: 0px;
   left: 0;
   bottom: 0;
   width: 21%;

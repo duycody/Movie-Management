@@ -1,0 +1,28 @@
+.cancel{
+    color: #38454f;
+    border: 1px solid #38454f;
+    border-radius: 5px;
+    padding: 3px 10px;
+    float: right;
+    font-size: 13px;
+    background-color: transparent;
+}
+.cancel:hover{
+    background-color:#38454f ;
+    color: black;
+}
+.item{
+    background-color: #181f26;
+    padding: 10px 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: #31d39a;
+    font-size: 18px;
+    font-family: 'Francois One', sans-serif;
+}
+.number{
+    background-color: #1e3140;
+    padding: 10px;
+    border-radius: 10%;
+    color: #ffcc00;
+}

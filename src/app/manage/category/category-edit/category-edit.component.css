@@ -15,9 +15,10 @@
 :host {
   background: #182229;
   color: #fff;
+  padding-top: 50px;
   position: fixed;
   right: auto;
-  top: 50px;
+  top: 0px;
   left: 0;
   bottom: 0;
   width: 21%;

@@ -1,0 +1,8 @@
+<div *ngIf="movies.length >= 1 && !isFetching" class="row" style="padding: 10px;">
+    <div class="col-lg-12" style="font-size: 20px;color:#38454f;padding:5px 5px">Danh sách phim<button (click)="Cancel()" class="cancel">Đóng</button></div>
+    <div class="col-lg-1 col-2" style="padding: 5px;margin: 0;" *ngFor="let movie of movies">
+        <img src="{{ movie.imagePath }}" class="card-img-top" style="max-height: 100px;opacity: 0.7;">
+    </div>
+</div>
+<p style="color: white;padding:20px 10px" *ngIf="movies.length < 1 && !isFetching">Danh sách trống!</p>
+<p *ngIf="isFetching" style="margin-bottom: 15px;color: white;font-size: 20px;padding:20px 10px">Loading...</p>

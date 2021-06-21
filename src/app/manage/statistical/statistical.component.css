@@ -1,0 +1,29 @@
+.item{
+    background-color: #192128;
+    text-align: center;
+    padding: 40px 10px;
+    padding-top: 50px;
+    border-radius: 5px;
+    font-size: 40px;
+    color: #558cb9;
+    font-weight: bold;
+    font-family: 'Francois One', sans-serif;
+    margin: 5px 0;
+    background-size: cover;
+    box-shadow: 0 0 15px #070a0d;
+}
+.item p {
+    margin-bottom:20px ;
+}
+.item h3{
+    color: white;
+    opacity: 0.6;
+    font-family: 'Francois One', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+.item:focus{
+    border: 3px solid #030405;
+    border-radius: 5px;
+     padding: 44px 10px;
+}

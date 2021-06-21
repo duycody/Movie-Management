@@ -32,6 +32,23 @@ import { MovieDetailComponent } from './manage/movie/movie-detail/movie-detail.c
 import { MovieItemComponent } from './manage/movie/movie-item/movie-item.component';
 import { MovieListComponent } from './manage/movie/movie-list/movie-list.component';
 import { MovieEditComponent } from './manage/movie/movie-edit/movie-edit.component';
+import { StatisticalComponent } from './manage/statistical/statistical.component';
+import { ListMovieComponent } from './manage/statistical/list-movie/list-movie.component';
+import { ListNationComponent } from './manage/statistical/list-nation/list-nation.component';
+import { ListCategoryComponent } from './manage/statistical/list-category/list-category.component';
+import { TransfereService } from './model/transferedata.service';
+import { LoginComponent } from './login/login.component';
+import { HomeNationComponent } from './home/home-nation/home-nation.component';
+import { HomeNationListComponent } from './home/home-nation/home-nation-list/home-nation-list.component';
+import { HomeNationDetailComponent } from './home/home-nation/home-nation-detail/home-nation-detail.component';
+import { HomeNationItemComponent } from './home/home-nation/home-nation-item/home-nation-item.component';
+import { HomeNationMovieItemComponent } from './home/home-nation/home-nation-movie-item/home-nation-movie-item.component';
+import { HomeCategoryComponent } from './home/home-category/home-category.component';
+import { HomeCategoryDetailComponent } from './home/home-category/home-category-detail/home-category-detail.component';
+import { HomeCategoryItemComponent } from './home/home-category/home-category-item/home-category-item.component';
+import { HomeCategoryListComponent } from './home/home-category/home-category-list/home-category-list.component';
+import { HomeCategoryMovieItemComponent } from './home/home-category/home-category-movie-item/home-category-movie-item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +74,21 @@ import { MovieEditComponent } from './manage/movie/movie-edit/movie-edit.compone
     MovieItemComponent,
     MovieListComponent,
     MovieEditComponent,
+    StatisticalComponent,
+    ListMovieComponent,
+    ListNationComponent,
+    ListCategoryComponent,
+    LoginComponent,
+    HomeNationComponent,
+    HomeNationListComponent,
+    HomeNationDetailComponent,
+    HomeNationItemComponent,
+    HomeNationMovieItemComponent,
+    HomeCategoryComponent,
+    HomeCategoryDetailComponent,
+    HomeCategoryItemComponent,
+    HomeCategoryListComponent,
+    HomeCategoryMovieItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,9 +97,9 @@ import { MovieEditComponent } from './manage/movie/movie-edit/movie-edit.compone
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
-  providers: [MovieService,NationService,CategoryService],
+  providers: [MovieService,NationService,CategoryService,TransfereService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

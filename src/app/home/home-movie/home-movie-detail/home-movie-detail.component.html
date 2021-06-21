@@ -1,14 +1,14 @@
 <div class="list-group" *ngIf="movie.name !='' && !isFetching">
-    <div id="loginScreen" class="container-fluid">
+    <div id="detailScreen" class="container-fluid">
         <div style="padding:20%;padding-top: 100px;">
             <div class="row" style="background-color: #0b151d;">
-                <div class="col-lg-3" style="padding:20px 20px" align="center">
+                <div class="col-lg-3 col-xs-3" style="padding:20px 20px" align="center">
                     <img src="{{ movie.imagePath }}" class="card-img-top" style="border-radius: 5px">
                     <h2 style="font-weight: bolder;color: white;margin: 10px;text-align: center;margin-bottom: 5px;">
                         {{movie.name}}</h2>
                     <h3 style="color: white;margin: 0;opacity: 0.7;">{{movie.year}}</h3>
                 </div>
-                <div class="col-lg-9"
+                <div class="col-lg-9 col-xs-9"
                     style="background-color: #2a3740;padding: 15px 15px;color: #020508;font-size: 20px;">
                     <p style="font-weight: bold;color: #2fd297;"><i style='font-size:20px;margin-right: 10px;'
                             class='fas'>&#xf017;</i>{{ movie.duration }} phút</p>

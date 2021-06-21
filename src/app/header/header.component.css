@@ -9,10 +9,7 @@ body {
   overflow: hidden;
   background-color: #1e2931;
   padding: 5px 10px;
-  overflow: hidden;
-  position: fixed;
   width: 100%;
-  z-index: 2;
 }
 a{color: white;}
 .header .header-right a {

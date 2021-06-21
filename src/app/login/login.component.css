@@ -1,0 +1,13 @@
+.form-control{
+    height: 45px;
+    background-color: #1a242b;
+    border: none;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #d2dce4;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.form-group{
+    color: #667079;
+}

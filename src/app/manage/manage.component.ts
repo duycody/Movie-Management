@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Movie } from '../model/movie.model';
-import { MovieService } from '../model/movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage',
@@ -9,20 +7,20 @@ import { MovieService } from '../model/movie.service';
   styleUrls: ['./manage.component.css']
 })
 export class ManageComponent implements OnInit {
-  loadedPosts = [];
-  constructor(private http: HttpClient) { }
-  ngOnInit() { }
-  onCreatePost(postData: { title: string; content: string }) {
-    this.http.post("https://movie-management-e5833-default-rtdb.firebaseio.com/posts.json", postData).subscribe((responseData) => {
-      console.log(responseData);
-    });
+  constructor(private router: Router) { }
+  ngOnInit() { 
+    this.checkLogin();
   }
-  onFetchPosts() {
-    this.fetchPosts();
+  logout()
+  {
+    sessionStorage.clear();
+    this.router.navigate(['home-component']);
   }
-  private fetchPosts() {
-    this.http
-      .get("https://movie-management-e5833-default-rtdb.firebaseio.com/posts.json").subscribe((responseData) => { console.log(responseData); });
+  checkLogin()
+  {
+    if(sessionStorage.getItem('user') == null)
+    {
+      this.router.navigate(['login']);
+    }
   }
-
 }

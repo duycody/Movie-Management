@@ -69,6 +69,4 @@ export class NationDetailComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
-
 }

@@ -10,7 +10,7 @@ import { MovieService } from 'src/app/model/movie.service';
 })
 export class HomeMovieDetailComponent implements OnInit {
 
- isFetching = true;
+  isFetching = true;
   movie: Movie = new Movie('', '', '', '', '', '', '');
   movies: Movie[] = [];
   id!: number;

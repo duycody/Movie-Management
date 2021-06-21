@@ -1,0 +1,13 @@
+.cancel{
+    color: #38454f;
+    border: 1px solid #38454f;
+    border-radius: 5px;
+    padding: 3px 10px;
+    float: right;
+    font-size: 13px;
+    background-color: transparent;
+}
+.cancel:hover{
+    background-color:#38454f ;
+    color: black;
+}

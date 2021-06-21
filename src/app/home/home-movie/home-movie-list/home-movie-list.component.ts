@@ -12,6 +12,7 @@ export class HomeMovieListComponent implements OnInit {
 
   totalLength: any;
   page:number = 1;
+  selected: string = "";
 
   movies: Movie[] = [];
   isFetching = true;
@@ -31,4 +32,5 @@ export class HomeMovieListComponent implements OnInit {
       this.movies = movies;
     });
   }
+  
 }
