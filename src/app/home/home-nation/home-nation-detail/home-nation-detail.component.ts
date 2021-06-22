@@ -8,22 +8,22 @@ import { NationService } from 'src/app/model/nation.service';
 @Component({
   selector: 'app-home-nation-detail',
   templateUrl: './home-nation-detail.component.html',
-  styleUrls: ['./home-nation-detail.component.css']
+  styleUrls: ['./home-nation-detail.component.css'],
 })
 export class HomeNationDetailComponent implements OnInit {
-
   totalLength: any;
-  page:number = 1;
+  page: number = 1;
   movies: Movie[] = [];
   isFetching = true;
   nation: Nation = new Nation('');
+  selected: string = '';
   id!: number;
   constructor(
     private movieService: MovieService,
     private nationService: NationService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
   ngOnChanges(changes: SimpleChanges) {
     this.onFetchMovies();
   }
@@ -37,7 +37,7 @@ export class HomeNationDetailComponent implements OnInit {
   onFetchMovies() {
     this.movieService.fetchMovies().subscribe((movies) => {
       this.isFetching = false;
-      this.movies = movies.filter(item => item.nation == this.nation.name);
+      this.movies = movies.filter((item) => item.nation == this.nation.name);
       this.totalLength = this.movies.length;
     });
   }
@@ -54,5 +54,15 @@ export class HomeNationDetailComponent implements OnInit {
   }
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
+  }
+  selectMovieName(name: string) {
+    for (var i = 0; i < this.movies.length; i++) {
+      if (this.movies[i].name == name) {
+        this.router.navigate(['all/' + i], { relativeTo: this.route });
+      }
+    }
+  }
+  isNotAll() {
+    return this.router.url !== '/nation/all';
   }
 }

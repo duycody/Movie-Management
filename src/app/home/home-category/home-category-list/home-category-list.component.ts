@@ -8,16 +8,20 @@ import { MovieService } from 'src/app/model/movie.service';
 @Component({
   selector: 'app-home-category-list',
   templateUrl: './home-category-list.component.html',
-  styleUrls: ['./home-category-list.component.css']
+  styleUrls: ['./home-category-list.component.css'],
 })
 export class HomeCategoryListComponent implements OnInit {
-
   show = false;
   categorys: Category[] = [];
   movies: Movie[] = [];
-  selected: string = "";
+  selected: string = '';
   isFetching = true;
-  constructor( private movieService: MovieService,private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private movieService: MovieService,
+    private categoryService: CategoryService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.onFetchCategories();
@@ -36,11 +40,13 @@ export class HomeCategoryListComponent implements OnInit {
     });
   }
   selectMovieName(name: string) {
-    for(var i = 0;i<this.movies.length;i++){
-      if(this.movies[i].name == name)
-      {
-        this.router.navigate(['all/'+i], { relativeTo: this.route });
+    for (var i = 0; i < this.movies.length; i++) {
+      if (this.movies[i].name == name) {
+        this.router.navigate(['all/' + i], { relativeTo: this.route });
       }
     }
+  }
+  isAll(){
+      return this.router.url === '/category/all';
   }
 }

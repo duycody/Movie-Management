@@ -1,3 +1,24 @@
+<div class="container-fluid" *ngIf="isNotAll()">
+        <div *ngIf="movies.length >= 1 && !isFetching" class="row" style="margin-bottom: 0px">
+            <div class="col-lg-4" style="padding: 0 30px;">
+                <div class="box">
+                    <div class="search">
+                        <span class="icon"><i class="fa fa-search"></i></span>
+                        <input type="search" id="search" placeholder="nhập tên phim..." type="text" list="movies"
+                            name="movies" [(ngModel)]='selected' (change)="selectMovieName(selected)" />
+                    </div>
+                </div>
+                <datalist id="movies">
+                    <div style="width: 100%;">
+                        <select style="width: 100%;">
+                            <option *ngFor="let movie of movies" [value]="movie.name"></option>
+                        </select>
+                    </div>
+                </datalist>
+            </div>
+            <div class="col-lg-8"></div>
+        </div>
+</div>
 <div class="col-sm-12" style="margin-bottom: 15px;">
     <p style="color: white;margin-left: 10px; margin: 20px 0;" *ngIf="movies.length < 1 && !isFetching">Danh sách trống...</p>
     <div *ngIf="movies.length >= 1 && !isFetching">

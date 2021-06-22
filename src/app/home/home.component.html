@@ -3,7 +3,7 @@
     <div style="padding: 20px;margin-top: 90px;margin-bottom: 10px;">
         <p class="danhsach" align="center">DANH SÁCH PHIM</p>
     </div>
-    <div>
+    <div class="container-fluid">
         <div *ngIf="movies.length >= 1 && !isFetching" class="row" style="margin-bottom: 0px">
             <div class="col-lg-4" style="padding: 0 30px;">
                 <div class="box">
@@ -23,6 +23,6 @@
             </div>
             <div class="col-lg-8"></div>
         </div>
-        <router-outlet></router-outlet>
     </div>
+    <router-outlet></router-outlet>
 </div>

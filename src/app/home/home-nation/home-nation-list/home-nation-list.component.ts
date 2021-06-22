@@ -8,15 +8,20 @@ import { NationService } from 'src/app/model/nation.service';
 @Component({
   selector: 'app-home-nation-list',
   templateUrl: './home-nation-list.component.html',
-  styleUrls: ['./home-nation-list.component.css']
+  styleUrls: ['./home-nation-list.component.css'],
 })
 export class HomeNationListComponent implements OnInit {
   show = false;
   nations: Nation[] = [];
   movies: Movie[] = [];
-  selected: string = "";
+  selected: string = '';
   isFetching = true;
-  constructor( private movieService: MovieService,private nationService: NationService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private movieService: MovieService,
+    private nationService: NationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.onFetchNations();
@@ -35,11 +40,13 @@ export class HomeNationListComponent implements OnInit {
     });
   }
   selectMovieName(name: string) {
-    for(var i = 0;i<this.movies.length;i++){
-      if(this.movies[i].name == name)
-      {
-        this.router.navigate(['all/'+i], { relativeTo: this.route });
+    for (var i = 0; i < this.movies.length; i++) {
+      if (this.movies[i].name == name) {
+        this.router.navigate(['all/' + i], { relativeTo: this.route });
       }
     }
+  }
+  isAll() {
+    return this.router.url === '/nation/all';
   }
 }

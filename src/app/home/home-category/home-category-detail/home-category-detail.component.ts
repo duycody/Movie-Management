@@ -17,6 +17,7 @@ export class HomeCategoryDetailComponent implements OnInit {
   movies: Movie[] = [];
   isFetching = true;
   category: Category = new Category('');
+  selected: string = "";
   id!: number;
   constructor(
     private movieService: MovieService,
@@ -55,5 +56,15 @@ export class HomeCategoryDetailComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
+  selectMovieName(name: string) {
+    for(var i = 0;i<this.movies.length;i++){
+      if(this.movies[i].name == name)
+      {
+        this.router.navigate(['all/'+i], { relativeTo: this.route });
+      }
+    }
+  }
+  isNotAll(){
+      return this.router.url !== '/category/all';
+  }
 }
