@@ -8,23 +8,23 @@ import { MovieService } from 'src/app/model/movie.service';
 @Component({
   selector: 'app-home-category-detail',
   templateUrl: './home-category-detail.component.html',
-  styleUrls: ['./home-category-detail.component.css']
+  styleUrls: ['./home-category-detail.component.css'],
 })
 export class HomeCategoryDetailComponent implements OnInit {
-
   totalLength: any;
-  page:number = 1;
+  page: number = 1;
   movies: Movie[] = [];
+  allmovies: Movie[] = [];
   isFetching = true;
   category: Category = new Category('');
-  selected: string = "";
+  selected: string = '';
   id!: number;
   constructor(
     private movieService: MovieService,
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
   ngOnChanges(changes: SimpleChanges) {
     this.onFetchMovies();
   }
@@ -38,7 +38,10 @@ export class HomeCategoryDetailComponent implements OnInit {
   onFetchMovies() {
     this.movieService.fetchMovies().subscribe((movies) => {
       this.isFetching = false;
-      this.movies = movies.filter(item => item.category == this.category.name);
+      this.allmovies = movies;
+      this.movies = movies.filter(
+        (item) => item.category == this.category.name
+      );
       this.totalLength = this.movies.length;
     });
   }
@@ -57,14 +60,13 @@ export class HomeCategoryDetailComponent implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
   selectMovieName(name: string) {
-    for(var i = 0;i<this.movies.length;i++){
-      if(this.movies[i].name == name)
-      {
-        this.router.navigate(['all/'+i], { relativeTo: this.route });
+    for (var i = 0; i < this.allmovies.length; i++) {
+      if (this.allmovies[i].name == name) {
+        this.router.navigate(['./' + i], { relativeTo: this.route });
       }
     }
   }
-  isNotAll(){
-      return this.router.url !== '/category/all';
+  isNotAll() {
+    return this.router.url !== '/category/all';
   }
 }

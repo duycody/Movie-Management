@@ -4,7 +4,7 @@
                 <div class="box">
                     <div class="search">
                         <span class="icon"><i class="fa fa-search"></i></span>
-                        <input type="search" id="search" placeholder="nhập tên phim..." type="text" list="movies" name="movies" [(ngModel)]='selected' (change)="selectMovieName(selected)" />
+                        <input onfocus="this.value=''" type="search" id="search" placeholder="nhập tên phim..." type="text" list="movies" name="movies" [(ngModel)]='selected' (change)="selectMovieName(selected)" />
                     </div>
                 </div>
                 <datalist id="movies">

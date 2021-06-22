@@ -14,6 +14,7 @@ export class HomeNationDetailComponent implements OnInit {
   totalLength: any;
   page: number = 1;
   movies: Movie[] = [];
+  allmovies: Movie[] = [];
   isFetching = true;
   nation: Nation = new Nation('');
   selected: string = '';
@@ -37,6 +38,7 @@ export class HomeNationDetailComponent implements OnInit {
   onFetchMovies() {
     this.movieService.fetchMovies().subscribe((movies) => {
       this.isFetching = false;
+      this.allmovies = movies;
       this.movies = movies.filter((item) => item.nation == this.nation.name);
       this.totalLength = this.movies.length;
     });
@@ -56,9 +58,9 @@ export class HomeNationDetailComponent implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
   selectMovieName(name: string) {
-    for (var i = 0; i < this.movies.length; i++) {
-      if (this.movies[i].name == name) {
-        this.router.navigate(['all/' + i], { relativeTo: this.route });
+    for (var i = 0; i < this.allmovies.length; i++) {
+      if (this.allmovies[i].name == name) {
+        this.router.navigate(['./' + i], { relativeTo: this.route });
       }
     }
   }
