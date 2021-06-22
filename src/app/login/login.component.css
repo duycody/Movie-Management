@@ -5,9 +5,19 @@
     padding-left: 10px;
     border-radius: 5px;
     font-size: 18px;
-    color: #d2dce4;
+    color: cornflowerblue;
     font-family: 'Roboto Condensed', sans-serif;
+    border: 1px solid cornflowerblue;
 }
 .form-group{
     color: #667079;
+}
+.btn{
+    color: black;
+    font-weight: bolder;
+    border:none;
+    border-radius: 25px;
+    font-size: 18px;
+    padding: 8px 20px;
+    background-color: cornflowerblue;
 }
